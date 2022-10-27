@@ -14,13 +14,19 @@ const Login = () => {
 
     const googleProvider = new GoogleAuthProvider()
     const gitProvider = new GithubAuthProvider();
-
+    const [error, setError] = useState('');
+    const { signIn, setLoading } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    useTitle('Login')
+    const from = location.state?.from?.pathname || '/';
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error))
     }
@@ -29,16 +35,13 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true });
+
             })
             .catch(error => console.error(error))
     }
 
-    const [error, setError] = useState('');
-    const { signIn, setLoading } = useContext(AuthContext);
-    const navigate = useNavigate();
-    const location = useLocation();
-    useTitle('Login')
-    const from = location.state?.from?.pathname || '/';
+
 
     const handleSubmit = event => {
         event.preventDefault();
