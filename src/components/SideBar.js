@@ -12,8 +12,8 @@ const SideBar = () => {
     }, [])
     return (
         <div>
-            <h4>All Courses</h4>
             <ListGroup>
+                <ListGroupItem className='mt-5'>All Courses</ListGroupItem>
                 {courses.map(course => <ListGroupItem key={course.id}>
                     <Link to={`/courses/${course.id}`}>{course.name}</Link>
                 </ListGroupItem>)

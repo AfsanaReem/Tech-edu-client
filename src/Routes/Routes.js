@@ -1,9 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import Course from "../components/Course";
+import Blog from "../components/Blog";
+import Checkout from "../components/Checkout";
 import Courses from "../components/Courses";
+import Details from "../components/Details";
+import FAQ from "../components/FAQ";
 import Home from "../components/Home";
 import Login from "../components/Login";
+import Register from "../components/Register";
 import Main from "../layout/Main";
+import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -17,7 +22,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
-                element: <Courses></Courses>,
+                element: <PrivateRoute><Courses></Courses></PrivateRoute>,
                 loader: () => fetch('https://tech-edu-server.vercel.app')
             },
             {
@@ -25,9 +30,26 @@ export const routes = createBrowserRouter([
                 element: <Login></Login>
             },
             {
-                path: '/Courses/:id',
-                element: <Course></Course>,
-                loader: ({ params }) => fetch(`https://tech-edu-server.vercel.app/${params.id}`)
+                path: '/register',
+                element: <Register></Register>
+            },
+            {
+                path: '/courses/:id',
+                element: <Details></Details>,
+                loader: ({ params }) => fetch(`https://tech-edu-server.vercel.app/courses/${params.id}`)
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
+            },
+            {
+                path: '/faq',
+                element: <FAQ></FAQ>
+            },
+            {
+                path: '/checkout',
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
+                loader: ({ params }) => fetch(`https://tech-edu-server.vercel.app/courses/${params.id}`)
             },
 
         ]

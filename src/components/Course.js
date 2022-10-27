@@ -1,8 +1,9 @@
 import React from 'react';
-import { Card, Col, ListGroup, Row } from 'react-bootstrap';
+import { Button, Card, Col, ListGroup, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Course = ({ course }) => {
-    const { name, img, title, fee, time, requirements } = course;
+    const { id, name, img, title, fee, time, requirements } = course;
     return (
         <div>
             <Card className='mt-5 mb-5'>
@@ -21,12 +22,13 @@ const Course = ({ course }) => {
                             <ListGroup.Item>Course Fee: ${fee}</ListGroup.Item>
                         </ListGroup>
                         <Card.Body>
-                            <Card.Link href="#">Course Details</Card.Link>
-                            <Card.Link href="#">Enroll</Card.Link>
+                            <Button variant='outline-primary' className='mb-2'><Card.Link href={`/courses/${id}`}>Details</Card.Link></Button>
+                            <br />
+                            <Button variant='outline-primary'><Card.Link href={`/courses/${id}`}>Enroll Now</Card.Link></Button>
                         </Card.Body></Col>
                 </Row>
             </Card>
-        </div>
+        </div >
     );
 };
 
