@@ -4,6 +4,7 @@ import Checkout from "../components/Checkout";
 import Courses from "../components/Courses";
 import Details from "../components/Details";
 import FAQ from "../components/FAQ";
+import HeaderNav from "../components/HeaderNav";
 import Home from "../components/Home";
 import Login from "../components/Login";
 import Register from "../components/Register";
@@ -22,7 +23,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
-                element: <PrivateRoute><Courses></Courses></PrivateRoute>,
+                element: <Courses></Courses>,
                 loader: () => fetch('https://tech-edu-server.vercel.app')
             },
             {
@@ -53,5 +54,12 @@ export const routes = createBrowserRouter([
             },
 
         ]
+    },
+    {
+        path: '*',
+        element: <div>
+            <HeaderNav></HeaderNav>
+            <img src="page404.jpg"></img>
+        </div>
     }
 ]);
