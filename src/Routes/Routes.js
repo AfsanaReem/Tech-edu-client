@@ -59,7 +59,7 @@ export const routes = createBrowserRouter([
         path: '*',
         element: <div>
             <HeaderNav></HeaderNav>
-            <img src="page404.jpg"></img>
+            <img alt='Page not found' src="page404.jpg"></img>
         </div>
     }
 ]);
