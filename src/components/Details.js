@@ -5,7 +5,7 @@ import Pdf from "react-to-pdf";
 
 const Details = () => {
     const single = useLoaderData();
-    const { img, title, time, fee, name, details, obj, requirements } = single;
+    const { img, id, title, time, fee, name, details, obj, requirements } = single;
     const ref = React.createRef();
     return (
         <Container>
@@ -32,7 +32,7 @@ const Details = () => {
                             <ListGroup.Item>{obj}</ListGroup.Item>
                         </ListGroup></div>
                         <Card.Body>
-                            <Button variant='outline-primary'><Card.Link >Get premium access</Card.Link></Button>
+                            <Button variant='outline-primary'><Card.Link href={`/checkout/${id}`}>Get premium access</Card.Link></Button>
 
                         </Card.Body></Col>
                 </Row>
